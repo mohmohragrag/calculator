@@ -74,10 +74,14 @@ function calculateWeight() {
                 break;
 
             case "Seamless Steel Pipes - Circular":
-                    const [lengthPipe, outerDiameter, thicknessPipe] = values;
-                    weight = ((outerDiameter - thicknessPipe) * thicknessPipe * lengthPipe * 0.025) / 1000 ;
-
-                    break;
+                const [lengthPipe, outerDiameter, thicknessPipe] = values;
+                lengthPipe = lengthPipe + 20;
+                weight = ((outerDiameter / 1000) - (thicknessPipe / 1000)) * (thicknessPipe / 1000) * (lengthPipe / 1000) * 0.025;
+                
+                // قسمة الوزن على 1000 لتحريك العلامة العشرية
+                weight = weight / 1000;
+                
+                break;
                 
 
             case "Hollow Structural Sections - Square":
